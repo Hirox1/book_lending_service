@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-pb+10_7hsie2vpm=al=ld$0vy47*(2woc*dn&ow$@s^6dhak0@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -94,10 +95,13 @@ DATABASES = {
         'NAME': 'book_lending_service_db',
         'USER': 'bls',
         'PASSWORD': '12345678',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }
+
+#sudo lsof -i (check all running server)
+# sudo kill "id" (kill port process)
 
 #sudo -u postgres psql
 #CREATE DATABASE your_database_name;

@@ -1,10 +1,15 @@
 asgiref==3.8.1
+azure-cognitiveservices-speech==1.41.1
+channels==4.2.0
 Django==5.1.4
 djangorestframework==3.15.2
 djangorestframework-simplejwt==5.3.1
 drf-yasg==1.21.8
 inflection==0.5.1
+media==0.1.6
 packaging==24.2
+pillow==11.0.0
+psycopg2-binary==2.9.10
 PyJWT==2.10.1
 pytz==2024.2
 PyYAML==6.0.2

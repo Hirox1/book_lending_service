@@ -1,9 +1,22 @@
-version: '3'
+version: '3.9'
 
 services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: bls           # Matches the USER field in settings.py
+      POSTGRES_PASSWORD: 12345678  # Matches the PASSWORD field in settings.py
+      POSTGRES_DB: book_lending_service_db  # Matches the NAME field in settings.py
+    ports:
+      - "5432:5432"  # Map the host's port 5432 to the container's port 5432
+
   web:
-    build: .
+    build:
+      context: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
+    depends_on:
+      - db
