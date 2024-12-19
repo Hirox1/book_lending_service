@@ -6,6 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email']
+        ref_name = 'BooksUserSerializer'  # Add this line to avoid conflict
 
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
