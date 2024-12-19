@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',  # Swagger
     'books',
+    'users',
+    'requests',
 ]
 
 # REST Framework settings
