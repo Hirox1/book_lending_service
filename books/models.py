@@ -23,12 +23,14 @@ class Book(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
-    condition = models.CharField(max_length=10, choices=CONDITION_CHOICES)
+    condition = models.CharField(max_length=4, choices=CONDITION_CHOICES)
     location = models.CharField(max_length=255)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='book_images/', null=True, blank=True)
-    interested_users = models.ManyToManyField(User, related_name='interested_books', blank=True)
+    # Default set to avoid migration issue for existing data
+    image = models.ImageField(upload_to='book_images/', blank=True, null=True, default='default_image.jpg')
+    interested_users = models.ManyToManyField(
+        User, related_name='interested_books', blank=True
+    )
 
     def __str__(self):
         return self.title
-

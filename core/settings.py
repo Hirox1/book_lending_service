@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'books',
     'users',
     'requests',
+    'authori',
+
 ]
 
 # REST Framework settings
