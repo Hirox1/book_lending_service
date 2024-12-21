@@ -163,3 +163,44 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": SECRET_KEY,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
+
+#this code is for when I lost my token and new one, write user and password what authenticate in swagger and go for new token
+
+#curl -X POST http://127.0.0.1:8000/api/token/ \
+#-H "Content-Type: application/json" \
+#-d '{
+  #"username": "admin",
+  #"password": "your_admin_password"
+#}'
+
+#second step in docker-compose terminal
+#curl -X GET http://127.0.0.1:8000/api/requests/requests/ \
+#-H "Authorization: Bearer new_access_token_here"
+
+
+
+
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': False,  # Disable session authentication
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        },
+    },
+    'DEFAULT_MODEL_RENDERING': 'example',
+}
